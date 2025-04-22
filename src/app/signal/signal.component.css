@@ -1,0 +1,61 @@
+
+/* Title */
+ h2 {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Description text */
+p {
+    font-size: 0.9rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Blue button */
+.main-btn {
+    display: block;
+    width: 100%;
+    background-color: #003366; /* Dark blue */
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Links */
+ .links {
+    margin-top: 15px;
+}
+
+ .links a {
+    display: block;
+    text-decoration: none;
+    color: #003366;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+ .links a:hover {
+    text-decoration: underline;
+}
+
+/* Red alert button */
+ .alert-btn {
+   display: block;
+   width: 90%;
+   background-color: #D9534F; /* Dark blue */
+   color: white;
+   text-align: center;
+   padding: 12px;
+   border-radius: 10px;
+   text-decoration: none;
+   font-weight: bold;
+   margin-top: 10px;
+}

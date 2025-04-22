@@ -1,0 +1,25 @@
+<div *ngIf="loading" class="loader-container">
+  <div class="spinner"></div>
+  <p>Chargement du dashboard...</p>
+</div>
+
+<div *ngIf="!loading" style="width: 100%; margin: 0; padding: 0;">
+  <div class="right-section">
+    <app-signal></app-signal>
+  </div>
+  <div *ngIf="showChatbot" class="Dright-section">
+    <button class="close-btn" (click)="closeChatbot()">X</button>
+    <app-chatbot></app-chatbot>
+  </div>
+
+
+  <iframe
+    title="data_dashbord"
+    width="1080"
+    height="600"
+    [src]="safeUrl"
+    frameborder="0"
+    allowFullScreen="true">
+  </iframe>
+
+</div>

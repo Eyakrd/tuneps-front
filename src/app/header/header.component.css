@@ -1,0 +1,48 @@
+header {
+    display: flex;
+    justify-content: flex-end; /* Space between heading and logos */
+    align-items: center; /* Center everything vertically */
+    background-color: #003366; /* Dark blue background */
+    padding: 15px 20px; /* Add some padding */
+    color: white; /* Text color */
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+/* Style the heading */
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    flex-grow: 1; /* Takes available space */
+    text-align: left; /* Align text to the left */
+}
+
+/* Container for logos */
+.logo-container {
+    display: flex;
+    gap: 20px; /* Space between logos */
+}
+
+/* Style for images */
+.app-logo {
+    height: 60px; /* Adjust logo size */
+}
+
+
+.header-left {
+    
+    float: left;
+    gap: 10px; /* Espace entre Login et Logout */
+    color: white; /* Couleur du texte pour les liens */
+}
+
+/* Ajout des styles pour les liens Login et Logout */
+.header-left a {
+    text-decoration: none;
+    color: white; /* Couleur blanche pour les liens */
+    font-weight: bold;
+}
+
+.header-left a:hover {
+    text-decoration: underline; /* Ajouter un soulignement au survol */
+}

@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="login-box">
+      <h2>Inscription</h2>
+      <form (ngSubmit)="register()" #registerForm="ngForm">
+        <div class="input-box">
+          <input type="text" [(ngModel)]="user.firstname" name="firstName" required>
+          <label>Prénom</label>
+        </div>
+        <div class="input-box">
+          <input type="text" [(ngModel)]="user.lastname" name="lastName" required>
+          <label>Nom</label>
+        </div>
+        <div class="input-box">
+          <input type="email" [(ngModel)]="user.email" name="email" required>
+          <label>Email</label>
+        </div>
+        <div class="input-box">
+          <input type="password" [(ngModel)]="user.password" name="password" required>
+          <label>Mot de passe</label>
+        </div>
+        <button type="submit" class="btn">S'inscrire</button>
+        <div class="login-link">
+          <a routerLink="/login">Vous avez déjà un compte ? Connexion</a>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Blinking animation spans -->
+    <span style="--i:0;"></span>
+    <span style="--i:1;"></span>
+    <span style="--i:2;"></span>
+    <span style="--i:3;"></span>
+    <span style="--i:4;"></span>
+    <span style="--i:5;"></span>
+    <span style="--i:6;"></span>
+    <span style="--i:7;"></span>
+    <span style="--i:8;"></span>
+    <span style="--i:9;"></span>
+    <span style="--i:10;"></span>
+    <span style="--i:11;"></span>
+    <span style="--i:12;"></span>
+    <span style="--i:13;"></span>
+    <span style="--i:14;"></span>
+    <span style="--i:15;"></span>
+  </div>
+  

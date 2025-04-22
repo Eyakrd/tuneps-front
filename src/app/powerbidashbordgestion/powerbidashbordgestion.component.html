@@ -1,0 +1,46 @@
+<div class="dashboard-form">
+    <h2>Ajouter un Dashboard</h2>
+
+    <label for="title">Titre :</label>
+    <input id="title" [(ngModel)]="title" type="text" placeholder="Saisir le titre du rapport" />
+
+    <label for="url">URL:</label>
+    <input id="url" [(ngModel)]="url" type="text" placeholder="Saisir l'URL du rapport" />
+  <label for="type">Type :</label>
+  <select id="type" [(ngModel)]="type">
+    <option value="public">Public</option>
+    <option value="interne">Interne</option>
+  </select>
+    <button (click)="addDashboard()">Enregistrer le rapport</button>
+  </div>
+  <div *ngIf="message" class="message">
+    {{ message }}
+  </div>
+
+
+<h1>Afficher tous les rapports </h1>
+<div class="dashboard-grid">
+  <div class="dashboard-item" *ngFor="let dash of dashboards" (click)="selectDashboard(dash)">
+    <h3>{{dash.title}}</h3>
+    <p>Créé le : {{dash.createdAt | date:'medium'}}</p>
+    <iframe
+      [src]="sanitizer.bypassSecurityTrustResourceUrl(dash.url)"
+      frameborder="0"
+      allowfullscreen
+      title="Dashboard"></iframe>
+  </div>
+</div>
+<div *ngIf="selectedDashboard" class="overlay" (click)="closeDashboard()"></div>
+
+<div *ngIf="selectedDashboard" class="modal" >
+  <h2>{{selectedDashboard.title}}</h2>
+  <p>Créé le : {{selectedDashboard.createdAt | date:'fullDate'}}</p>
+  <iframe
+    [src]="sanitizer.bypassSecurityTrustResourceUrl(selectedDashboard.url)"
+    frameborder="0"
+    allowfullscreen
+    title="Dashboard"></iframe>
+  <button (click)="closeDashboard()">Fermer</button></div>
+
+
+

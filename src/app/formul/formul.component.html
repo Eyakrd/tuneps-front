@@ -1,0 +1,64 @@
+<h1>Service d'Audit de l'État</h1>
+
+<div class="container">
+  <h2>Remplir le formulaire de demande</h2>
+  <form [formGroup]="aFormGroup" (ngSubmit)="onSubmit()">
+    <label for="type-appel">Type d'appel:</label>
+    <select id="type-appel" formControlName="typeDec">
+      <option value="">Sélectionnez le type de demande</option>
+      <option value="offre">Offre</option>
+      <option value="plainte">Plainte</option>
+      <option value="declaration">Déclaration</option>
+    </select>
+
+    <label for="nom">Nom, prénom, patronyme:</label>
+    <input type="text" id="nom" placeholder="Nom, prénom, patronyme" formControlName="nom">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="example@email.com" formControlName="email">
+
+    <label for="telephone">Numéro de téléphone de contact:</label>
+    <input type="tel" id="telephone" placeholder="030/256-789" formControlName="telephone">
+
+    <label for="adresse">Adresse postale:</label>
+    <input type="text" id="adresse" placeholder="Code, région, ville, rue, maison, appartement" formControlName="adresse">
+
+    <label for="statut-social">Statut social:</label>
+    <select id="statut-social" formControlName="statutSocial">
+      <option value="">Choisissez votre statut social</option>
+      <option value="salarié">Salarié</option>
+      <option value="militaire">Militaire</option>
+      <option value="militaireret">Militaire Retraités</option>
+      <option value="sansemp">Sans emploi</option>
+      <option value="paysan">Paysan</option>
+      <option value="etudiant" >Étudiant</option>
+      <option value="entrepreneur" >Entrepreneur</option>
+      <option value="journaliste">Journaliste</option>
+      <option value="autre" >Autres</option>
+    </select>
+
+    <label for="texte-appel">Texte de l'appel <span class="required">*</span></label>
+    <textarea id="texte-appel" rows="4" placeholder="Entrez votre texte ici..." formControlName="texteAppel"></textarea>
+
+    <div>
+      <label for="file-upload" class="file-upload-label">
+        <span class="file-upload-text">Аucun fichier sélectionné</span>
+        <span class="file-upload-button">Sélectionnez un fichier</span>
+
+        <span class="clear-button" role="button">🗑️</span>
+      </label>
+      <input type="file" id="file-upload" class="file-upload-input" (change)="onFileSelected($event)" name="file">
+    </div>
+
+    <ngx-recaptcha2
+      #captchaElem
+      [siteKey]="siteKey"
+      formControlName="recaptcha"
+    >
+    </ngx-recaptcha2>
+
+    <div class="button-container">
+      <button type="submit" [disabled]="aFormGroup.invalid">Envoyer</button>
+    </div>
+  </form>
+</div>

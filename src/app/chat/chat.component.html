@@ -1,0 +1,46 @@
+<div class="chat-bot-UI">
+  <div class="div">
+    <div class="overlap">
+      <div class="group">
+        <div class="overlap-group">
+          <div class="ellipse"></div>
+          <div class="ellipse-2"></div>
+        </div>
+      </div>
+      <div #scrollMe  class="conversation-container">
+        <div *ngFor="let message of conversation" class="message" [class.user]="message.role === 'user'" [class.bot]="message.role === 'bot'">
+          <div class="message-content">
+            <strong>{{ message.role === 'user' ? 'Vous' : 'Assistant' }}:</strong> 
+            {{ message.content }}
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="frame-2">
+        <input
+          type="text"
+          id="userInput"
+          class="input-bo"
+          [(ngModel)]="userQuestion"
+          placeholder="Poser une question sur TUNEPS..."
+          (keyup.enter)="sendMessage()"
+        />
+        <img class="send" src="send.jpg" (click)="sendMessage()" />
+      </div>
+
+      <div *ngIf="isLoading" class="loading">Chargement...</div>
+
+     
+     
+      
+    </div>
+
+    <div class="frame-4">
+      <img class="logo" src="chatbot.png" />
+      <div class="text-wrapper-4">Je suis là pour vous aider avec vos questions sur les marchés publics.</div>
+    </div>
+  </div>
+</div>

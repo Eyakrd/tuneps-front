@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+.container {
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.file-upload-label {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Distribute space between elements */
+    background-color: #e9ecef;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.file-upload-text {
+    color: #495057;
+    font-size: 14px;
+    flex-grow: 1; /* Allow text to take available space */
+}
+
+.file-upload-button {
+    background-color: #003366; /* Button color */
+    color: #ffffff;
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin-right: 10px; /* Space between buttons */
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.file-upload-button:hover {
+    background-color: #0056b3; /* Darken on hover */
+}
+
+.clear-button {
+    background-color: #ff4d4d; /* Clear button color */
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    display: inline-flex; /* Ensure it behaves like a button */
+    align-items: center; /* Center the icon vertically */
+    justify-content: center; /* Center the icon horizontally */
+}
+
+.clear-button:hover {
+    background-color: #ff1a1a; /* Darken on hover */
+}
+
+/* Optional: Add focus styles for accessibility */
+.clear-button:focus,
+.file-upload-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.5);
+}
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.required {
+    color: red;
+}
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Aligne le bouton à droite */
+    margin-top: 20px; /* Espace au-dessus du bouton */
+}
+
+button {
+    background-color: #003366; /* Couleur bleue */
+    color: #ffffff; /* Texte blanc */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Supprimez float: right */
+}
+
+button:hover {
+    background-color: #007bff; /* Couleur bleue plus foncée au survol */
+}
