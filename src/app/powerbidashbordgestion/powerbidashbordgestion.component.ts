@@ -17,7 +17,7 @@ export class PowerbidashbordgestionComponent implements OnInit  {
   title = '';
   url = '';
   type ='';
-  active = true;
+  status = 'active';
 
 
 
@@ -38,8 +38,12 @@ export class PowerbidashbordgestionComponent implements OnInit  {
 
   addDashboard() {
     if(this.title && this.url) {
-      const dashboard = { title: this.title, url: this.url, type: this.type,
-        active: this.active};
+      const dashboard = {
+        title: this.title,
+        url: this.url,
+        type: this.type,
+        status: this.status // Utiliser status au lieu de isActive
+      };
 
       this.dashboardService.addDashboard(dashboard).subscribe(response => {
         console.log('Dashboard added successfully', response);
@@ -47,7 +51,7 @@ export class PowerbidashbordgestionComponent implements OnInit  {
         this.title = '';
         this.url = '';
         this.type = '';
-        this.active = true;
+        this.status = 'active';
         if (this.dashboards) {
           this.dashboards.push(response);
         } else {
@@ -60,7 +64,7 @@ export class PowerbidashbordgestionComponent implements OnInit  {
     } else {
       this.message = 'Veuillez remplir tous les champs !';
     }
-}
+  }
   ngOnInit() {
     this.loading = true;
     this.dashboardService.getAllDashboard().subscribe({
@@ -76,6 +80,18 @@ export class PowerbidashbordgestionComponent implements OnInit  {
         console.error('Error fetching dashboard:', err);
         this.loading = false;
       }
+    });
+  }
+
+
+  toggleDashboardActivation(dashboard: Dashboard) {
+    const newStatus = dashboard.status === 'active' ? 'inactive' : 'active';
+    this.dashboardService.updateDashboardStatus(dashboard.id!, newStatus).subscribe({
+      next: () => {
+        console.log("Statut mis à jour");
+        dashboard.status = newStatus; // Mettre à jour le statut localement
+      },
+      error: err => console.error("Erreur de mise à jour", err)
     });
   }
 

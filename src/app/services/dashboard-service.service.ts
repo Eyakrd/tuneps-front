@@ -9,7 +9,7 @@ export interface Dashboard {
     url: string;
     createdAt?: string;
     type: string;
-    active : boolean;
+    status: string;
 
 
 }
@@ -35,4 +35,15 @@ export class DashboardServiceService {
   getDashboardsByType(type: string): Observable<Dashboard> {
     return this.http.get<Dashboard>(`${this.apiUrl}/type/${type}`);
   }
+
+
+  updateDashboardStatus(id: number, status: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}/status`, { status });
+  }
+
+
+
+
+
+
 }
