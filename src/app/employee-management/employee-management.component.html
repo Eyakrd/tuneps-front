@@ -1,0 +1,42 @@
+<div class="employee-management-container">
+  <h2>Gestion des Employés</h2>
+
+  <!-- Formulaire Ajouter Employé -->
+  <div class="add-employee-form">
+    <h3>Ajouter un Employé</h3>
+    <form (ngSubmit)="addEmployee()" #employeeForm="ngForm">
+      <input type="text" [(ngModel)]="newEmployee.firstname" name="firstname" placeholder="Prénom" required>
+      <input type="text" [(ngModel)]="newEmployee.lastname" name="lastname" placeholder="Nom" required>
+      <input type="email" [(ngModel)]="newEmployee.email" name="email" placeholder="Email" required>
+      <input type="text" [(ngModel)]="newEmployee.cin" name="cin" placeholder="CIN" required>
+      <input type="password" [(ngModel)]="newEmployee.password" name="password" placeholder="Mot de passe" required>
+      <button type="submit">Ajouter Employé</button>
+    </form>
+  </div>
+
+  <!-- Liste des employés sous forme de cartes -->
+  <div class="employee-cards">
+    <div class="employee-card" *ngFor="let emp of employees">
+      <h4>{{ emp.firstname }} {{ emp.lastname }}</h4>
+
+      <div class="employee-info">
+        <label>Email:</label>
+        <input [(ngModel)]="emp.email" (blur)="updateEmployee(emp)">
+      </div>
+
+      <div class="employee-info">
+        <label>CIN:</label>
+        <input [(ngModel)]="emp.cin" (blur)="updateEmployee(emp)">
+      </div>
+
+      <div class="employee-info">
+        <label>Status:</label>
+        <span [class.active]="emp.status === 'ACTIVE'" [class.inactive]="emp.status === 'INACTIVE'">
+          {{ emp.status }}
+        </span>
+      </div>
+
+
+    </div>
+  </div>
+</div>

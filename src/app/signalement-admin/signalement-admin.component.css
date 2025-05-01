@@ -1,0 +1,71 @@
+.demandes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  width: 300px;
+  padding: 1rem;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #f9f9f9;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.custom-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1050;
+  width: 60%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.popup-content {
+  text-align: center;
+}
+
+.custom-popup button {
+  margin-top: 15px;
+}
+/* Style général du bouton */
+.btn-info {
+  background-color: #003366;
+  color: white;
+  border: 2px solid #17a2b8;
+  padding: 8px 15px;  /* Réduit la taille du padding */
+  font-size: 14px;    /* Taille de police plus petite */
+  font-weight: 600;
+  border-radius: 6px; /* Angle du bouton un peu plus petit */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Changer la couleur du bouton au survol */
+.btn-info:hover {
+  background-color: #138496;
+  border-color: #138496;
+}
+
+/* Changer la couleur du bouton lorsqu'on clique */
+.btn-info:active {
+  background-color: #0d6e7d;
+  border-color: #0d6e7d;
+  transform: translateY(2px);
+}
+
+/* Ajouter une ombre portée pour l'effet de survol */
+.btn-info:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

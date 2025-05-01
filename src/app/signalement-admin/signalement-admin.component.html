@@ -1,0 +1,35 @@
+<div class="demandes-container">
+  <div *ngFor="let demande of demandes" class="card m-2 p-3" style="width: 30%;">
+    <h5 class="card-title">📝 Type de signalement: {{ demande.typeDec }}</h5>
+    <p><strong>Email:</strong> {{ demande.email }}</p>
+    <p><strong>Status Social:</strong> {{ demande.statutSocial }}</p>
+
+    <!-- Texte tronqué avec lien "voir plus" -->
+    <p>
+      <strong>Signalement:</strong>
+      {{ demande.texteAppel | slice:0:50 }}...
+      <a href="#" (click)="ouvrirPopup(demande.texteAppel); $event.preventDefault()">[voir plus]</a>
+    </p>
+
+    <button class="btn btn-info" (click)="analyserSignalement(demande.texteAppel)">Analyser</button>
+
+
+    <!-- Fichier joint -->
+    <div *ngIf="demande.fileName">
+      <p><strong>📎 Fichier :</strong> {{ demande.fileName }}</p>
+      <a [href]="'http://localhost:8080/api/demandes/telechargerFichier/' + demande.id"
+         class="btn btn-sm btn-primary" target="_blank">
+        Télécharger le fichier
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 🟡 Popup Custom -->
+<div class="custom-popup" *ngIf="popupVisible">
+  <div class="popup-content">
+    <h5>📌 Texte du signalement</h5>
+    <p>{{ selectedSignalement }}</p>
+    <button class="btn btn-danger btn-sm" (click)="fermerPopup()">Fermer</button>
+  </div>
+</div>

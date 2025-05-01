@@ -1,0 +1,67 @@
+import { Component } from '@angular/core';
+import {EmployeeService} from '../services/employee.service';
+import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
+
+@Component({
+  selector: 'app-employee-management',
+  imports: [FormsModule,CommonModule],
+  templateUrl: './employee-management.component.html',
+  styleUrl: './employee-management.component.css'
+})
+export class EmployeeManagementComponent {
+  employees: any[] = [];
+  newEmployee = { firstname: '', lastname: '', email: '', cin: '', password: '',status: 'ACTIVE' };
+
+  constructor(private employeeService: EmployeeService) {}
+
+  ngOnInit(): void {
+    this.loadEmployees();
+  }
+
+  loadEmployees() {
+    this.employeeService.getEmployees().subscribe((data :any) => {
+      this.employees = data;
+    });
+  }
+
+  addEmployee() {
+    console.log('Tentative d\'ajout d\'employé', this.newEmployee);
+
+    if (!this.newEmployee.firstname || !this.newEmployee.lastname) {
+      return;
+    }
+
+    this.employeeService.addEmployee(this.newEmployee).subscribe({
+      next: () => {
+        this.loadEmployees();
+        this.newEmployee = {
+          firstname: '',
+          lastname: '',
+          email: '',
+          cin: '',
+          password: '',
+          status: 'ACTIVE'
+        };
+      },
+      error: (err) => {
+        console.error('Erreur lors de l\'ajout', err);
+      }
+    });
+  }
+
+
+  updateEmployee(employee: any) {
+    this.employeeService.updateEmployee(employee.id, employee).subscribe(() => {
+      this.loadEmployees();
+    });
+  }
+
+  /*toggleStatus(employee: any) {
+    const newStatus = employee.status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE';
+    this.employeeService.changeStatus(employee.id, newStatus).subscribe(() => {
+      this.loadEmployees();
+    });
+  }*/
+
+}

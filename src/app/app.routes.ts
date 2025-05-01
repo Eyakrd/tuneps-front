@@ -13,6 +13,8 @@ import { roleGuard } from './guards/role.guard';
 import { ChatComponent } from './chat/chat.component';
 import { PowerbidashbordgestionComponent } from './powerbidashbordgestion/powerbidashbordgestion.component';
 import { DisplayDashboardComponent } from './display-dashboard/display-dashboard.component';
+import {EmployeeManagementComponent} from './employee-management/employee-management.component';
+import {SignalementAdminComponent} from './signalement-admin/signalement-admin.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'info', component: InfoComponent },
@@ -26,5 +28,7 @@ export const routes: Routes = [
     { path: 'chat', component: ChatComponent },
     {path: 'dashbordGest', component: PowerbidashbordgestionComponent} ,
     {path: 'dashboard', component: DisplayDashboardComponent} ,
+    {path: 'employeeGest',component: EmployeeManagementComponent},
+    {path: 'lesSignalement',component: SignalementAdminComponent}
 
 ];
