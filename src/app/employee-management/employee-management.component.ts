@@ -62,6 +62,21 @@ export class EmployeeManagementComponent {
     });
   }
 
+  changeStatus(userId: number, currentStatus: string) {
+    const newStatus = currentStatus === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE';
+    this.employeeService.updateUserStatus(userId, newStatus).subscribe({
+      next: (res) => {
+        alert('Statut mis à jour: ' + newStatus);
+        // Optionnel: refresh la liste des utilisateurs
+        this.loadEmployees();
+      },
+      error: (err) => {
+        console.error('Erreur HTTP:', err);
+        alert('Erreur lors de la mise à jour du statut');
+      }
+    });
+  }
+
   /*toggleStatus(employee: any) {
     const newStatus = employee.status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE';
     this.employeeService.changeStatus(employee.id, newStatus).subscribe(() => {

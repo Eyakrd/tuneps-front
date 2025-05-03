@@ -35,10 +35,16 @@ export class EmployeeService {
     return this.http.put<any>(`${this.baseUrl}/changeStatus/${id}`,{status: newStatus} );
 
   } */
+
   rechercherEmployees(cin: string, email: string): Observable<Employee[]> {
     const params = new HttpParams()
       .set('cin', cin || email)
       .set('email', email);
     return this.http.get<Employee[]>(`${this.baseUrl}/rechercher`, { params });
   }
+
+  updateUserStatus(userId: number, status: string) {
+    return this.http.put(`http://localhost:8080/api/employees/user/${userId}/status?status=${status}`, {});
+  }
+
 }

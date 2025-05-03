@@ -103,3 +103,34 @@ input[type="text"]:focus {
   outline: none;
   box-shadow: 0 0 8px #003366;
 }
+
+.btnStatus {
+  padding: 8px 16px;
+  background-color: rgba(255, 0, 0, 0.5) !important;
+  border: none;
+  border-radius: 8px;
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btnStatus:hover {
+  transform: scale(1.05);
+}
+.btnupdate {
+  padding: 8px 16px;
+  background-color: #003366 !important;
+  border: none;
+  border-radius: 8px;
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btnStatus:hover {
+  transform: scale(1.05);
+}

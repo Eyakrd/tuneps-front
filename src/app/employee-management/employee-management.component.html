@@ -41,7 +41,11 @@
           {{ emp.status }}
         </span>
       </div>
-      <button (click)="updateEmployee(emp)">Mettre à jour</button>
+      <button class="btnupdate" (click)="updateEmployee(emp)">Mettre à jour</button>
+
+      <button class="btnStatus" (click)="changeStatus(emp.id, emp.status)">
+        {{ emp.status === 'ACTIVE' ? 'Désactiver' : 'Activer' }}
+      </button>
 
     </div>
   </div>

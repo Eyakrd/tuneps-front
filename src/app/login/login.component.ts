@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
- 
+
   loginobj: Login;
   errorMessage: string = '';
 
@@ -24,8 +24,8 @@ export class LoginComponent {
   ) {
     this.loginobj = new Login();
   }
-  
-  
+
+
   onLogin() {
     this.http.post('http://localhost:8080/api/v1/user/login', this.loginobj)
       .subscribe({
@@ -38,7 +38,13 @@ export class LoginComponent {
           }
         },
         error: (err) => {
-          console.error('Login error:', err); // Debug log
+          console.error('Login error:', err);
+          if (err.error && err.error.message) {
+            alert(err.error.message); // shows "Employé non autorisé"
+          } else {
+            alert('Employé non autorisé');
+
+          }
         }
       });
   }
@@ -46,13 +52,13 @@ export class LoginComponent {
   resetForm() {
     this.loginobj = new Login();
   }
-  
+
 }
 
 export class Login {
   email: string;
   password: string;
-  
+
   constructor() {
     this.email = '';
     this.password = '';
