@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 export interface Employee {
   id?: number;
@@ -28,11 +28,17 @@ export class EmployeeService {
   }
 
   updateEmployee(id: number, employee: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/${id}`, employee);
+    return this.http.put<any>(`${this.baseUrl}/update`, employee);
   }
 
   /* changeStatus(id:number, newStatus: string):Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/changeStatus/${id}`,{status: newStatus} );
 
   } */
+  rechercherEmployees(cin: string, email: string): Observable<Employee[]> {
+    const params = new HttpParams()
+      .set('cin', cin || email)
+      .set('email', email);
+    return this.http.get<Employee[]>(`${this.baseUrl}/rechercher`, { params });
+  }
 }

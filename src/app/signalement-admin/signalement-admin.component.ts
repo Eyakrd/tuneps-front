@@ -22,8 +22,12 @@ export class SignalementAdminComponent implements OnInit {
   ngOnInit() :void{
     this.demandeService.obtenirToutesLesDemandes().subscribe({
       next: (data) => {
-        this.demandes = data;
+        this.demandes = data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
         console.log('Demandes récupérées :', data); // debug
+        this.demandes.forEach(demande => {
+          this.analyserSignalementAuto(demande)
+        });
       },
       error: (err) => {
         console.error('Erreur lors de la récupération des demandes :', err);
@@ -59,6 +63,18 @@ export class SignalementAdminComponent implements OnInit {
       (error) => {
         console.error('Erreur lors de l\'analyse du signalement:', error);
         alert('Une erreur est survenue lors de l\'analyse.');
+      }
+    );
+  }
+
+  private analyserSignalementAuto(demande: any): void {
+    this.analyseService.analyserSignalement(demande.texteAppel).subscribe(
+      (response) => {
+        demande.graviteAnalysee = response.gravite;
+      },
+      (error) => {
+        console.error('Erreur analyse automatique:', error);
+        demande.graviteAnalysee = 'Erreur';
       }
     );
   }

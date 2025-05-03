@@ -23,7 +23,7 @@
 
 .add-employee-form button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #003366;
   color: white;
   border: none;
   border-radius: 5px;
@@ -87,4 +87,19 @@
 .inactive {
   color: red;
   font-weight: bold;
+}
+
+
+input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  transition: box-shadow 0.3s;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 8px #003366;
 }

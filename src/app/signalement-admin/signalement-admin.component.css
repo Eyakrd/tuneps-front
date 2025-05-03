@@ -69,3 +69,32 @@
 .btn-info:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* signalement-admin.component.css */
+
+.badge {
+  padding: 0.4em 0.6em;
+  border-radius: 0.5em;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.bg-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.bg-warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.bg-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.bg-secondary {
+  background-color: #6c757d;
+  color: white;
+}

@@ -3,8 +3,8 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { NgxCaptchaModule  } from 'ngx-captcha'; // Import du service
-
+import { NgxCaptchaModule ,ReCaptcha2Component  } from 'ngx-captcha'; // Import du service
+import { ViewChild } from '@angular/core';
 @Component({
   selector: 'app-formul',
   templateUrl: './formul.component.html',
@@ -23,6 +23,8 @@ export class FormulComponent implements OnInit {
     texteAppel: ''
   };
 
+
+  @ViewChild('captchaRef') captchaRef!: ReCaptcha2Component;
   selectedFile: File | null = null;
   aFormGroup!: FormGroup;
   siteKey: string = "6LdUrR8rAAAAADmsN1QnQbRvsSb1qUePEAvB1vpm"; // reCAPTCHA Site Key
@@ -106,6 +108,9 @@ export class FormulComponent implements OnInit {
         (response) => {
           console.log('Demande ajoutée:', response);
           alert('Demande ajoutée avec succès!');
+          this.aFormGroup.reset();      // reset le formGroup
+          this.selectedFile = null; //fichier a null
+          this.captchaRef.resetCaptcha();
         },
         (error) => {
           console.error('Erreur:', error);

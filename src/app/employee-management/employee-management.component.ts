@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {EmployeeService} from '../services/employee.service';
+import {Employee, EmployeeService} from '../services/employee.service';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 
@@ -11,17 +11,21 @@ import {CommonModule} from '@angular/common';
 })
 export class EmployeeManagementComponent {
   employees: any[] = [];
-  newEmployee = { firstname: '', lastname: '', email: '', cin: '', password: '',status: 'ACTIVE' };
+  newEmployee = {firstname: '', lastname: '', email: '', cin: '', password: '', status: 'ACTIVE'};
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService) {
+  }
+  searchQuery: string = '';
+  allEmployees: Employee[] = [];
 
   ngOnInit(): void {
     this.loadEmployees();
   }
 
   loadEmployees() {
-    this.employeeService.getEmployees().subscribe((data :any) => {
+    this.employeeService.getEmployees().subscribe((data: any) => {
       this.employees = data;
+      this.allEmployees = data;
     });
   }
 
@@ -54,6 +58,7 @@ export class EmployeeManagementComponent {
   updateEmployee(employee: any) {
     this.employeeService.updateEmployee(employee.id, employee).subscribe(() => {
       this.loadEmployees();
+      console.log('updated');
     });
   }
 
@@ -63,5 +68,24 @@ export class EmployeeManagementComponent {
       this.loadEmployees();
     });
   }*/
+  /* searchValue: string = '';
 
+  rechercherEmployees() {
+    this.employeeService.rechercherEmployees(this.searchValue, this.searchValue)
+      .subscribe(data => {
+        this.employees = data;
+      });
+  } */
+
+
+
+
+  filterEmployees() {
+    const query = this.searchQuery.toLowerCase();
+
+    this.employees = this.allEmployees.filter(emp =>
+      emp.cin.toLowerCase().includes(query) ||
+      emp.email.toLowerCase().includes(query)
+    );
+  }
 }

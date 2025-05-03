@@ -49,11 +49,13 @@
       </label>
       <input type="file" id="file-upload" class="file-upload-input" (change)="onFileSelected($event)" name="file">
     </div>
+    <br>
 
     <ngx-recaptcha2
-      #captchaElem
+      #captchaRef
       [siteKey]="siteKey"
       formControlName="recaptcha"
+
     >
     </ngx-recaptcha2>
 

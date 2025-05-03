@@ -1,6 +1,12 @@
 <div class="employee-management-container">
   <h2>Gestion des Employés</h2>
 
+  <!-- Barre de recherche -->
+
+
+  <input type="text" [(ngModel)]="searchQuery" (input)="filterEmployees()" placeholder="Rechercher par CIN ou Email">
+
+
   <!-- Formulaire Ajouter Employé -->
   <div class="add-employee-form">
     <h3>Ajouter un Employé</h3>
@@ -35,7 +41,7 @@
           {{ emp.status }}
         </span>
       </div>
-
+      <button (click)="updateEmployee(emp)">Mettre à jour</button>
 
     </div>
   </div>

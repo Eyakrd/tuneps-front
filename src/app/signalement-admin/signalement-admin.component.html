@@ -1,5 +1,13 @@
 <div class="demandes-container">
   <div *ngFor="let demande of demandes" class="card m-2 p-3" style="width: 30%;">
+     <span [ngClass]="{
+    'badge bg-success': demande.graviteAnalysee === 'faible',
+    'badge bg-warning text-dark': demande.graviteAnalysee === 'moyenne',
+    'badge bg-danger': demande.graviteAnalysee === 'élevée',
+    'badge bg-secondary': demande.graviteAnalysee === 'Erreur'
+      }">
+        {{ demande.graviteAnalysee }}
+     </span>
     <h5 class="card-title">📝 Type de signalement: {{ demande.typeDec }}</h5>
     <p><strong>Email:</strong> {{ demande.email }}</p>
     <p><strong>Status Social:</strong> {{ demande.statutSocial }}</p>
@@ -11,7 +19,6 @@
       <a href="#" (click)="ouvrirPopup(demande.texteAppel); $event.preventDefault()">[voir plus]</a>
     </p>
 
-    <button class="btn btn-info" (click)="analyserSignalement(demande.texteAppel)">Analyser</button>
 
 
     <!-- Fichier joint -->
@@ -22,6 +29,11 @@
         Télécharger le fichier
       </a>
     </div>
+    <br>
+    <button class="btn btn-info" (click)="analyserSignalement(demande.texteAppel)">Analyser</button>
+
+    <p><strong>Créé le :</strong> {{ demande.createdAt | date:'short' }}</p>
+
   </div>
 </div>
 
