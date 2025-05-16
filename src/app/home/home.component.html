@@ -23,3 +23,20 @@
   </iframe>
 
 </div>
+
+<div *ngIf="safeUrl; else noDashboard">
+  <iframe
+    [src]="safeUrl"
+    width="100%"
+    height="600"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<!-- Bloc de repli si l'URL est absente -->
+<ng-template #noDashboard>
+  <div class="no-dashboard-message">
+    <p>Aucun dashboard public n'est disponible actuellement.</p>
+  </div>
+</ng-template>

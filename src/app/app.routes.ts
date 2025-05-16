@@ -15,6 +15,8 @@ import { PowerbidashbordgestionComponent } from './powerbidashbordgestion/powerb
 import { DisplayDashboardComponent } from './display-dashboard/display-dashboard.component';
 import {EmployeeManagementComponent} from './employee-management/employee-management.component';
 import {SignalementAdminComponent} from './signalement-admin/signalement-admin.component';
+import {ProfileComponent} from './profile/profile.component';
+import {EditProfileComponent} from './edit-profile/edit-profile.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'info', component: InfoComponent },
@@ -29,6 +31,9 @@ export const routes: Routes = [
     {path: 'dashbordGest', component: PowerbidashbordgestionComponent} ,
     {path: 'dashboard', component: DisplayDashboardComponent} ,
     {path: 'employeeGest',component: EmployeeManagementComponent},
-    {path: 'lesSignalement',component: SignalementAdminComponent}
+    {path: 'lesSignalement',component: SignalementAdminComponent},
+    {path: 'profile',component: ProfileComponent},
+      {path: 'edit-profile', component: EditProfileComponent},
+
 
 ];

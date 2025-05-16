@@ -1,11 +1,16 @@
 <header>
+  <div  *ngIf="isEmployee" class="profile-logo" (click)="goToProfile()">
+    <span class="material-icons profile-icon">account_circle</span>
+  </div>
 
     <div class="header-left">
-        <a *ngIf="! isLoggedIn()" routerLink="/login">Se connecter</a> 
+        <a *ngIf="! isLoggedIn()" routerLink="/login">Se connecter</a>
         <a *ngIf=" isLoggedIn()" (click)="logout()">Se déconnecter</a>
+
+
         <i class="fas fa-sign-out" style="font-size:36px"></i>
     </div>
-        
+
     <div class="logo-container">
         <img src="https://www.tuneps.tn/assets/images/logo-tuneps.svg" class="app-logo" alt="logo_tuneps" />
         <h1>République de Tunisie <br>

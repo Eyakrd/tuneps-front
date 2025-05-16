@@ -32,7 +32,23 @@ export class EmployeeManagementComponent {
   addEmployee() {
     console.log('Tentative d\'ajout d\'employé', this.newEmployee);
 
-    if (!this.newEmployee.firstname || !this.newEmployee.lastname) {
+    if (!this.newEmployee.firstname || !this.newEmployee.lastname || !this.newEmployee.email || !this.newEmployee.cin || !this.newEmployee.password) {
+      alert('Veuillez remplir tous les champs.');
+      return;
+    }
+    const existingEmployee = this.employees.find(emp => emp.cin === this.newEmployee.cin);
+    if (existingEmployee) {
+      alert('Un employé avec ce CIN existe déjà : ' + existingEmployee.firstname + ' ' + existingEmployee.lastname);
+
+      // Réinitialiser le formulaire
+      this.newEmployee = {
+        firstname: '',
+        lastname: '',
+        email: '',
+        cin: '',
+        password: '',
+        status: 'ACTIVE'
+      };
       return;
     }
 

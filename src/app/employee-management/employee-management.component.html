@@ -43,7 +43,11 @@
       </div>
       <button class="btnupdate" (click)="updateEmployee(emp)">Mettre à jour</button>
 
-      <button class="btnStatus" (click)="changeStatus(emp.id, emp.status)">
+      <button class="btnStatus"  [ngClass]="{
+    'active-button': emp.status === 'ACTIVE',
+    'inactive-button': emp.status === 'INACTIVE'
+  }"
+               (click)="changeStatus(emp.id, emp.status)">
         {{ emp.status === 'ACTIVE' ? 'Désactiver' : 'Activer' }}
       </button>
 

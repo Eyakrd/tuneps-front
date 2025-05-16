@@ -71,7 +71,19 @@ export class FormulComponent implements OnInit {
 
   onSubmit(): void {
     if (this.aFormGroup.invalid) {
-      alert("Veuillez valider le reCAPTCHA avant de soumettre.");
+      const controls = this.aFormGroup.controls;
+      const missingFields: string[] = [];
+
+      if (controls['typeDec'].invalid) missingFields.push('Type de déclaration');
+      if (controls['nom'].invalid) missingFields.push('Nom');
+      if (controls['email'].invalid) missingFields.push('Email');
+      if (controls['telephone'].invalid) missingFields.push('Téléphone');
+      if (controls['adresse'].invalid) missingFields.push('Adresse');
+      if (controls['statutSocial'].invalid) missingFields.push('Statut social');
+      if (controls['texteAppel'].invalid) missingFields.push('Texte d’appel');
+      if (controls['recaptcha'].invalid) missingFields.push('reCAPTCHA');
+
+      alert(`Veuillez compléter les champs obligatoires suivants :\n- ${missingFields.join('\n- ')}`);
       return;
     }
 

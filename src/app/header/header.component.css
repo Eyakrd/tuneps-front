@@ -30,7 +30,7 @@ h1 {
 
 
 .header-left {
-    
+
     float: left;
     gap: 10px; /* Espace entre Login et Logout */
     color: white; /* Couleur du texte pour les liens */
@@ -45,4 +45,14 @@ h1 {
 
 .header-left a:hover {
     text-decoration: underline; /* Ajouter un soulignement au survol */
+}
+
+.profile-logo {
+  cursor: pointer;
+}
+
+.profile-icon {
+  font-size: 36px;
+  color: white;
+  margin-right:600px;
 }

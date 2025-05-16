@@ -12,9 +12,15 @@ import { AuthService } from '../services/auth.service';
   standalone: true,
 })
 export class HeaderComponent {
+  isEmployee: boolean = false;
+
   constructor(private AuthService:AuthService,private router: Router){}
 
-  ngOnInit():void{}
+  ngOnInit(): void {
+    const role = localStorage.getItem('userRole');
+    this.isEmployee = role === 'EMPLOYEE';
+  }
+
 
   public isLoggedIn(){
     return this.AuthService.isLoggedIn();
@@ -22,7 +28,11 @@ export class HeaderComponent {
   public logout(){
     this.AuthService.clear();
     this.router.navigate(['/home']);
-    
+
   }
+  goToProfile() {
+    this.router.navigate(['/profile']); // vers la route du composant profil
+  }
+
 
 }

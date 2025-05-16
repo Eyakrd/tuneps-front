@@ -34,10 +34,11 @@ export class ChatComponent {
     const question = this.userQuestion.trim();
     if (!question) return;
 
-    this.isLoading = true;
-    this.chatService.addToHistory('user', question); // Add user question to conversation history
-    this.userQuestion = ''; // Clear the input field
 
+    this.chatService.addToHistory('user', question); // Add user question to conversation history
+    this.conversation = [...this.chatService.getHistory()];
+    this.userQuestion = ''; // Clear the input field
+    this.isLoading = true;
     this.chatService.sendMessage(question).subscribe({
       next: (response) => {
         this.chatService.addToHistory('bot', response.response); // Add bot response to conversation history
@@ -53,5 +54,5 @@ export class ChatComponent {
     });
     }
   }
-  
+
 

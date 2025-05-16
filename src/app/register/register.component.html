@@ -19,12 +19,15 @@
           <label>Mot de passe</label>
         </div>
         <button type="submit" class="btn">S'inscrire</button>
+        <p class="error" *ngIf="errorMessage" style="color:red; text-align:center; margin-top:10px;">
+          {{ errorMessage }}
+        </p>
         <div class="login-link">
           <a routerLink="/login">Vous avez déjà un compte ? Connexion</a>
         </div>
       </form>
     </div>
-  
+
     <!-- Blinking animation spans -->
     <span style="--i:0;"></span>
     <span style="--i:1;"></span>
@@ -43,4 +46,3 @@
     <span style="--i:14;"></span>
     <span style="--i:15;"></span>
   </div>
-  
