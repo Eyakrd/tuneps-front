@@ -17,6 +17,7 @@ import {EmployeeManagementComponent} from './employee-management/employee-manage
 import {SignalementAdminComponent} from './signalement-admin/signalement-admin.component';
 import {ProfileComponent} from './profile/profile.component';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
+import {ForgetPasswordComponent} from './forget-password/forget-password.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'info', component: InfoComponent },
@@ -33,7 +34,6 @@ export const routes: Routes = [
     {path: 'employeeGest',component: EmployeeManagementComponent},
     {path: 'lesSignalement',component: SignalementAdminComponent},
     {path: 'profile',component: ProfileComponent},
-      {path: 'edit-profile', component: EditProfileComponent},
-
-
+    {path: 'edit-profile', component: EditProfileComponent},
+    {path: 'resetPassword', component: ForgetPasswordComponent},
 ];

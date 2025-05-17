@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {map, Observable} from 'rxjs';
 import { UserAuthService } from './user-auth.service';
 import { Router } from '@angular/router';
 
@@ -107,6 +107,28 @@ export class AuthService {
     obtenirToutesLesDemandes(): Observable<any[]>{
       return this.http.get<any[]>(`${this.demandeUrl}/liste`);
     }
+
+
+  checkEmail(email : any ):Observable<any>{
+    return this.http.post<any>(`${this.authUrl}/checkEmail`,{email}).pipe(
+      map(
+        response => {
+          return response;
+        }
+      )
+    )
+  }
+
+  resetPassword(email: any,code:any,password:any):Observable<any>{
+    return this.http.post<any>(`${this.authUrl}/resetPassword`,{email,code,password}).pipe(
+      map(
+        response => {
+          return response;
+        }
+      )
+    )
+  }
+
 
 
 

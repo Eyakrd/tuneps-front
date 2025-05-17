@@ -15,7 +15,4 @@ import {Dashboard, DashboardServiceService} from '../services/dashboard-service.
 })
 export class AdminComponent {
 
-
-
-
 }
