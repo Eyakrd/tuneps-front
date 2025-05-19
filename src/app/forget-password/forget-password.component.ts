@@ -51,17 +51,22 @@ export class ForgetPasswordComponent {
       if (!email) return;
 
       this.authService.checkEmail(email).subscribe({
-        next: () => {
-          this.codeSent = true;
-          this.code?.enable();
-          this.newPassword?.enable();
-          alert('Code envoyé par email.');
+        next: (res) => {
+          if (res.result === 1) {
+            this.codeSent = true;
+            this.code?.enable();
+            this.newPassword?.enable();
+            alert('Code envoyé par email.');
+          } else {
+            alert('Aucun compte trouvé avec cet email.Veuillez vérifier l’adresse.');
+          }
         },
         error: err => {
-          alert('Email invalide.');
+          alert('Erreur serveur.');
           console.error(err);
         }
       });
+
     } else {
       const { email, code, newPassword } = this.resetForm.getRawValue();
       if (!code || !newPassword) {
@@ -70,15 +75,35 @@ export class ForgetPasswordComponent {
       }
 
       this.authService.resetPassword(email, code, newPassword).subscribe({
-        next: () => {
-          alert('Mot de passe réinitialisé.');
-          this.router.navigate(['/login']);
+        next: (res) => {
+          switch (res.result) {
+            case 1:
+              alert('Mot de passe réinitialisé.');
+              this.router.navigate(['/login']);
+              break;
+            case 2:
+              alert('Code expiré. Veuillez redemander un nouveau code.');
+              this.codeSent = false;
+              this.resetForm.get('code')?.disable();
+              this.resetForm.get('newPassword')?.disable();
+              break;
+            case 3:
+              alert('Mot de passe trop faible. Utilisez au moins 8 caractères, avec majuscules, chiffres, et symboles.');
+              break;
+            case 4:
+              alert('Erreur interne. Veuillez réessayer plus tard.');
+              break;
+            default:
+              alert('Code invalide.');
+              break;
+          }
         },
         error: err => {
-          alert('Code invalide ou expiré.');
+          alert('Erreur de communication avec le serveur.');
           console.error(err);
         }
       });
+
     }
   }
 }
